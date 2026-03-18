@@ -1,0 +1,1049 @@
+lsb_release -a
+
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 24.04.4 LTS
+Release:        24.04
+Codename:       noble
+
+ uname -r
+6.17.0-1008-gcp
+
+nproc 
+2
+
+free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       554Mi       6.1Gi       1.0Mi       1.3Gi       7.2Gi
+
+
+df -h
+Filesystem       Size  Used Avail Use% Mounted on
+/dev/root         29G  2.5G   26G   9% /
+tmpfs            3.9G     0  3.9G   0% /dev/shm
+tmpfs            1.6G  1.1M  1.6G   1% /run
+tmpfs            5.0M     0  5.0M   0% /run/lock
+efivarfs          56K   24K   27K  48% /sys/firmware/efi/efivars
+/dev/nvme0n1p16  881M   51M  769M   7% /boot
+/dev/nvme0n1p15  105M  6.2M   99M   6% /boot/efi
+tmpfs            794M  8.0K  794M   1% /run/user/0
+
+
+
+root@insurance:~# hostname
+insurance
+
+ uptime
+ 06:40:21 up 1 day, 23:00,  4 users,  load average: 0.00, 0.00, 0.00
+
+ sudo systemctl list-units --type=service
+  UNIT                                                   LOAD   ACTIVE
+ SUB     DESCRIPTION
+  apparmor.service                                       loaded active exited  Load AppArmor profiles
+  apport.service                                         loaded active exited  automatic crash report generation
+  chrony.service                                         loaded active running chrony, an NTP client/server
+  cloud-config.service                                   loaded active exited  Cloud-init: Config Stage
+  cloud-final.service                                    loaded active exited  Cloud-init: Final Stage
+  cloud-init-local.service                               loaded active exited  Cloud-init: Local Stage (pre-network)
+  cloud-init.service                                     loaded active exited  Cloud-init: Network Stage
+  console-setup.service                                  loaded active exited  Set console font and keymap
+  dbus.service                                           loaded active running D-Bus System Message Bus
+  getty@tty1.service                                     loaded active running Getty on tty1
+  google-cloud-ops-agent-fluent-bit.service              loaded active running Google Cloud Ops Agent - Logging Agent
+  google-cloud-ops-agent-opentelemetry-collector.service loaded active running Google Cloud Ops Agent - Metrics Agent
+  google-cloud-ops-agent.service                         loaded active exited  Google Cloud Ops Agent
+  google-guest-agent.service                             loaded active running Google Compute Engine Guest Agent
+  google-osconfig-agent.service                          loaded active running Google OSConfig Agent
+  google-shutdown-scripts.service                        loaded active exited  Google Compute Engine Shutdown Scripts
+  keyboard-setup.service                                 loaded active exited  Set the console keyboard layout
+  kmod-static-nodes.service                              loaded active exited  Create List of Static Device Nodes
+  ldconfig.service                                       loaded active exited  Rebuild Dynamic Linker Cache
+  networkd-dispatcher.service                            loaded active running Dispatcher daemon for systemd-networkd
+  rsyslog.service                                        loaded active running System Logging Service
+  serial-getty@ttyS0.service                             loaded active running Serial Getty on ttyS0
+  setvtrgb.service                                       loaded active exited  Set console scheme
+  snapd.apparmor.service                                 loaded active exited  Load AppArmor profiles managed internally by sn
+apd
+  snapd.seeded.service                                   loaded active exited  Wait until snapd is fully seeded
+  snapd.service                                          loaded active running Snap Daemon
+  ssh.service                                            loaded active running OpenBSD Secure Shell server
+  systemd-binfmt.service                                 loaded active exited  Set Up Additional Binary Formats
+  systemd-fsck-root.service                              loaded active exited  File System Check on Root Device
+  systemd-fsck@dev-disk-by\x2dlabel-BOOT.service         loaded active exited  File System Check on /dev/disk/by-label/BOOT
+  systemd-journal-catalog-update.service                 loaded active exited  Rebuild Journal Catalog
+  systemd-journal-flush.service                          loaded active exited  Flush Journal to Persistent Storage
+  systemd-journald.service                               loaded active running Journal Service
+  systemd-logind.service                                 loaded active running User Login Management
+  systemd-machine-id-commit.service                      loaded active exited  Commit a transient machine-id on disk
+  systemd-modules-load.service                           loaded active exited  Load Kernel Modules
+  systemd-networkd-wait-online.service                   loaded active exited  Wait for Network to be Configured
+  systemd-networkd.service                               loaded active running Network Configuration
+  systemd-random-seed.service                            loaded active exited  Load/Save OS Random Seed
+  systemd-remount-fs.service                             loaded active exited  Remount Root and Kernel File Systems
+  systemd-resolved.service                               loaded active running Network Name Resolution
+  systemd-sysctl.service                                 loaded active exited  Apply Kernel Variables
+  systemd-sysusers.service                               loaded active exited  Create System Users
+  systemd-tmpfiles-setup-dev-early.service               loaded active exited  Create Static Device Nodes in /dev gracefully
+  systemd-tmpfiles-setup-dev.service                     loaded active exited  Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service                         loaded active exited  Create Volatile Files and Directories
+  systemd-udev-trigger.service                           loaded active exited  Coldplug All udev Devices
+  systemd-udevd.service                                  loaded active running Rule-based Manager for Device Events and Files
+  systemd-update-done.service                            loaded active exited  Update is Completed
+  systemd-update-utmp.service                            loaded active exited  Record System Boot/Shutdown in UTMP
+  systemd-user-sessions.service                          loaded active exited  Permit User Sessions
+  unattended-upgrades.service                            loaded active running Unattended Upgrades Shutdown
+  user-runtime-dir@0.service                             loaded active exited  User Runtime Directory /run/user/0
+  user@0.service                                         loaded active running User Manager for UID 0
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+54 loaded units listed. Pass --all to see loaded but inactive units, too.
+To show all installed unit files use 'systemctl list-unit-files'.
+
+sudo ss -tlnp
+State   Recv-Q  Send-Q   Local Address:Port     Peer Address:Port  Process
+LISTEN  0       4096        127.0.0.54:53            0.0.0.0:*      users:(("systemd-resolve",pid=341,fd=17))
+LISTEN  0       4096     127.0.0.53%lo:53            0.0.0.0:*      users:(("systemd-resolve",pid=341,fd=15))
+LISTEN  0       4096           0.0.0.0:22            0.0.0.0:*      users:(("sshd",pid=53692,fd=3),("systemd",pid=1,fd=128))
+LISTEN  0       128            0.0.0.0:20202         0.0.0.0:*      users:(("fluent-bit",pid=1617,fd=260))
+LISTEN  0       4096              [::]:22               [::]:*      users:(("sshd",pid=53692,fd=4),("systemd",pid=1,fd=131))
+LISTEN  0       4096                 *:20201               *:*      users:(("otelopscol",pid=1602,fd=3))
+
+
+sudo ufw status verbose
+sudo: ufw: command not found
+
+
+ sudo iptables -L -n -v
+sudo: iptables: command not found
+
+
+ command not found
+root@insurance:~# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc mq state UP group default qlen 1000
+    link/ether 42:01:0a:94:00:02 brd ff:ff:ff:ff:ff:ff
+    altname enp0s3
+    inet 10.148.0.2/32 metric 100 scope global dynamic ens3
+       valid_lft 45382sec preferred_lft 45382sec
+    inet6 fe80::4001:aff:fe94:2/64 scope link
+       valid_lft forever preferred_lft forever
+
+root@insurance:~# hostnamectl
+   Static hostname: (unset)
+Transient hostname: insurance
+         Icon name: computer-vm
+           Chassis: vm 🖴
+        Machine ID: aa6e220c2fb9452284053825eea47470
+           Boot ID: 1aa36171eed14aedbc471e570c5caf4b
+    Virtualization: google
+  Operating System: Ubuntu 24.04.4 LTS
+            Kernel: Linux 6.17.0-1008-gcp
+      Architecture: x86-64
+   Hardware Vendor: Google
+    Hardware Model: Google Compute Engine
+  Firmware Version: Google
+     Firmware Date: Wed 2026-02-11
+      Firmware Age: 1month
+
+
+
+###########################################
+
+ wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
+--2026-03-14 07:14:43--  https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
+Resolving dev.mysql.com (dev.mysql.com)... 104.69.162.9, 2600:1413:b000:395::2e31, 2600:1413:b000:392::2e31
+Connecting to dev.mysql.com (dev.mysql.com)|104.69.162.9|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://repo.mysql.com//mysql-apt-config_0.8.33-1_all.deb [following]
+--2026-03-14 07:14:44--  https://repo.mysql.com//mysql-apt-config_0.8.33-1_all.deb
+Resolving repo.mysql.com (repo.mysql.com)... 23.210.109.97, 2600:1413:b000:795::1d68, 2600:1413:b000:78e::1d68
+Connecting to repo.mysql.com (repo.mysql.com)|23.210.109.97|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 18072 (18K) [application/x-debian-package]
+Saving to: ‘mysql-apt-config_0.8.33-1_all.deb’
+
+mysql-apt-config_0.8.33-1_all.d 100%[=====================================================>]  17.65K  --.-KB/s    in 0s
+
+2026-03-14 07:14:44 (270 MB/s) - ‘mysql-apt-config_0.8.33-1_all.deb’ saved [18072/18072]
+
+root@insurance:~# sudo dpkg -i mysql-apt-config_0.8.33-1_all.deb
+Selecting previously unselected package mysql-apt-config.
+dpkg: regarding mysql-apt-config_0.8.33-1_all.deb containing mysql-apt-config, pre-dependency problem:
+ mysql-apt-config pre-depends on gnupg
+  gnupg is not installed.
+
+dpkg: error processing archive mysql-apt-config_0.8.33-1_all.deb (--install):
+ pre-dependency problem - not installing mysql-apt-config
+Errors were encountered while processing:
+ mysql-apt-config_0.8.33-1_all.deb
+
+---sudo apt update
+sudo dpkg -i mysql-apt-config_0.8.33-1_all.deb
+
+The MySQL APT Repository features MySQL Server along with a variety of components. You may select the desired products to
+install and update from the official MySQL Repository, and also select the associated version series.
+
+Select "Ok" to save the configuration, and then execute "apt update" to load the selected package list. This configuration
+can be updated later, depending on your needs.
+
+  1. MySQL Server & Cluster (Currently selected: mysql-8.4-lts)  2. MySQL Connectors (Currently selected: Enabled)  3. Ok
+Which MySQL product do you wish to configure? 3
+
+
+wget -qO- https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | gpg --dearmor | sudo tee /usr/share/keyrings/mysql-apt-key.gpg > /dev/null
+root@insurance:~# sudo gpg --no-default-keyring --keyring /usr/share/keyrings/mysql-apt-key.gpg --list-keys
+/usr/share/keyrings/mysql-apt-key.gpg
+-------------------------------------
+pub   rsa4096 2021-12-14 [SC] [expired: 2023-12-14]
+      859BE8D7C586F538430B19C2467B942D3A79BD29
+uid           [ expired] MySQL Release Engineering <mysql-build@oss.oracle.com>
+
+root@insurance:~# sudo gpg --no-default-keyring \
+  --keyring /usr/share/keyrings/mysql-apt-key.gpg \
+  --keyserver hkp://keyserver.ubuntu.com:80 \
+  --recv-keys B7B3B788A8D3785C
+gpg: key B7B3B788A8D3785C: public key "MySQL Release Engineering <mysql-build@oss.oracle.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+root@insurance:~# sudo gpg --no-default-keyring --keyring /usr/share/keyrings/mysql-apt-key.gpg --list-keys
+/usr/share/keyrings/mysql-apt-key.gpg
+-------------------------------------
+pub   rsa4096 2021-12-14 [SC] [expired: 2023-12-14]
+      859BE8D7C586F538430B19C2467B942D3A79BD29
+uid           [ expired] MySQL Release Engineering <mysql-build@oss.oracle.com>
+
+pub   rsa4096 2023-10-23 [SC] [expires: 2027-10-23]
+      BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
+uid           [ unknown] MySQL Release Engineering <mysql-build@oss.oracle.com>
+sub   rsa4096 2023-10-23 [E] [expires: 2027-10-23]
+
+
+root@insurance:~#
+
+sudo apt update
+
+sudo apt update
+Hit:1 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://repo.mysql.com/apt/ubuntu noble InRelease [22.7 kB]
+Get:3 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:4 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Hit:5 https://packages.cloud.google.com/apt google-cloud-ops-agent-noble-2 InRelease
+Get:6 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1835 kB]
+Get:7 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1566 kB]
+Hit:8 http://security.ubuntu.com/ubuntu noble-security InRelease
+Get:9 http://repo.mysql.com/apt/ubuntu noble/mysql-8.4-lts Sources [983 B]
+Get:10 http://repo.mysql.com/apt/ubuntu noble/mysql-8.4-lts amd64 Packages [12.6 kB]
+Fetched 3690 kB in 1s (4051 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+
+
+root@insurance:~# sudo apt install -y mysql-community-server
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libaio1t64 libgdbm-compat4t64 libgdbm6t64 libmecab2 libnuma1 libperl5.38t64 libtirpc-common libtirpc3t64 mecab-ipadic
+  mecab-ipadic-utf8 mecab-utils mysql-client mysql-common mysql-community-client mysql-community-client-core
+  mysql-community-client-plugins mysql-community-server-core perl perl-modules-5.38 psmisc
+
+-----
+done!
+update-alternatives: using /var/lib/mecab/dic/ipadic-utf8 to provide /var/lib/mecab/dic/debian (mecab-dictionary) in auto mode
+Setting up mysql-community-client (8.4.8-1ubuntu24.04) ...
+Setting up mysql-client (8.4.8-1ubuntu24.04) ...
+Setting up mysql-community-server (8.4.8-1ubuntu24.04) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79.)
+debconf: falling back to frontend: Readline
+Configuring mysql-community-server
+----------------------------------
+
+Please provide a strong password that will be set for the root account of your MySQL database. Leave it blank to enable
+password less login using UNIX socket based authentication.
+
+Enter root password:
+
+Now that you have selected a password for the root account, please confirm by typing it again. Do not share the password with
+anyone.
+
+Re-enter root password:
+
+update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /usr/lib/systemd/system/mysql.service.
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+
+root@insurance:~# sudo mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Enter password for user root:
+
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No: y
+
+There are three levels of password validation policy:
+
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 2
+Using existing password for root.
+
+Estimated strength of the password: 100
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : No
+
+ ... skipping.
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+All done!
+
+
+root@insurance:~# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+dhcpcd:x:100:65534:DHCP Client Daemon,,,:/usr/lib/dhcpcd:/bin/false
+messagebus:x:101:102::/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:992:992:systemd Resolver:/:/usr/sbin/nologin
+sshd:x:102:65534::/run/sshd:/usr/sbin/nologin
+pollinate:x:103:1::/var/cache/pollinate:/bin/false
+syslog:x:104:106::/nonexistent:/usr/sbin/nologin
+uuidd:x:105:107::/run/uuidd:/usr/sbin/nologin
+_chrony:x:106:108:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+pib_infra:x:1001:1002::/home/pib_infra:/bin/bash
+mysql:x:107:109:MySQL Server,,,:/var/lib/mysql:/bin/false
+
+root@insurance:~# sudo systemctl status mysql
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service;
+enabled; preset: enabled)
+     Active: active (running) since Sat 2026-03-14 07:31:59 UTC; 33min ago
+       Docs: man:mysqld(8)
+             http://dev.mysql.com/doc/refman/en/using-systemd.html
+                                                                  ;
+   Main PID: 109214 (mysqld)
+     Status: "Server is operational"
+      Tasks: 35 (limit: 9430)
+     Memory: 558.6M (peak: 558.9M)
+        CPU: 9.224s
+     CGroup: /system.slice/mysql.service
+             └─109214 /usr/sbin/mysqld
+
+Mar 14 07:31:58 insurance systemd[1]: Starting mysql.service - MySQL Community Server...
+Mar 14 07:31:59 insurance systemd[1]: Started mysql.service - MySQL Community Server.
+
+
+root@insurance:~# pwd
+/root
+root@insurance:~# ls -lart
+total 24012
+-rw-r--r--  1 root root      161 Apr 22  2024 .profile
+-rw-r--r--  1 root root     3106 Apr 22  2024 .bashrc
+-rw-r--r--  1 root root    18072 Sep 27  2024 mysql-apt-config_0.8.33-1_all.deb
+drwxr-xr-x 22 root root     4096 Mar 12 07:39 ..
+drwx------  2 root root     4096 Mar 12 07:39 .ssh
+drwxr-xr-x  3 root root     4096 Mar 12 07:45 .local
+drwx------  2 root root     4096 Mar 12 12:46 .cache
+-rw-------  1 root root      628 Mar 14 06:42 .bash_history
+-rw-r--r--  1 root root      168 Mar 14 07:14 .wget-hsts
+drwx------  4 root root     4096 Mar 14 07:26 .gnupg
+drwx------  6 root root     4096 Mar 14 07:36 .
+-rw-r--r--  1 root root 24524586 Mar 14 07:36 kereta_insurance_backup.sql
+
+
+root@insurance:~# sudo mysql -u root -p
+Enter password:
+
+mysql> CREATE DATABASE insurance CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+Query OK, 1 row affected (0.00 sec)
+
+
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| insurance          |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> EXIT;
+
+root@insurance:~# sudo mysql -u root -p insurance < /root/kereta_insurance_backup.sql
+Enter password:
+root@insurance:~# sudo mysql -u root -p -e "USE insurance; SHOW TABLES;"
+Enter password:
++------------------------------------+
+| Tables_in_insurance                |
++------------------------------------+
+| anti_theft_code                    |
+| auth_group                         |
+| auth_group_permissions             |
+| auth_permission                    |
+| auth_user                          |
+| auth_user_groups                   |
+| auth_user_user_permissions         |
+| bank                               |
+| benefitcode_prcar_rvppc            |
+| core_agent                         |
+
+
+----
+
+mysql> CREATE USER 'insurance'@'%' IDENTIFIED BY 'Insurance';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> GRANT ALL PRIVILEGES ON insurance.* TO 'insurance'@'%';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
+
+root@insurance:~# sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+[mysqld]
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+datadir         = /var/lib/mysql
+log-error       = /var/log/mysql/error.log
+bind-address    = 0.0.0.0
+
+
+root@insurance:~# sudo systemctl restart mysql
+
+
+root@insurance:~# sudo ss -tlnp | grep 3306
+LISTEN 0      151          0.0.0.0:3306       0.0.0.0:*    users:(("mysqld",pid=111126,fd=28))
+LISTEN 0      70                 *:33060            *:*    users:(("mysqld",pid=111126,fd=19))
+
+root@insurance:~# mysql -u insurance -p -h 127.0.0.1
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.4.8 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| insurance          |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> USE insurance;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++------------------------------------+
+| Tables_in_insurance                |
++------------------------------------+
+| anti_theft_code                    |
+| auth_group                         |
+| auth_group_permissions             |
+| auth_permission                    |
+| auth_user                          |
+| auth_user_groups                   |
+| auth_user_user_permissions         |
+| bank                               |
+| benefitcode_prcar_rvppc            |
+| core_agent                         |
+| core_apirequestlog                 |
+| core_paymentreceipt                |
+| core_paymenttransaction            |
+| core_pendingpremiumjob             |
+| core_pendingpremiumsubscriber      |
+| core_uploadedmedia                 |
+| core_usersession                   |
+| core_usersessionhistory            |
+| core_vehiclecode                   |
+| core_whatsappmessagetemplate       |
+| core_wsresponsecode                |
+| country_code                       |
+| cover_codes                        |
+| django_admin_log                   |
+| django_celery_results_chordcounter |
+| django_celery_results_groupresult  |
+| django_celery_results_taskresult   |
+| django_content_type                |
+| django_migrations                  |
+| django_session                     |
+| hire_purchase                      |
+| marital_status                     |
+| master_vehiclecode                 |
+| master_whatsappmessagetemplate     |
+| master_wsresponsecode              |
+| occupation                         |
+| region                             |
+| state_master                       |
+| vehicle_body                       |
+| vehicle_types                      |
+| vehicle_use_code                   |
++------------------------------------+
+41 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM region;
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+
+
+
+root@insurance:~# sudo adduser insurance
+info: Adding user `insurance' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `insurance' (1003) ...
+info: Adding new user `insurance' (1003) with group `insurance (1003)' ...
+info: Creating home directory `/home/insurance' ...
+info: Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for insurance
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+info: Adding new user `insurance' to supplemental / extra groups `users' ...
+
+
+mysql:x:107:109:MySQL Server,,,:/var/lib/mysql:/bin/false
+insurance:x:1003:1003:,,,:/home/insurance:/bin/bash
+
+sudo mkdir -p /home/insurance/public_html
+sudo mkdir -p /home/insurance/logs
+sudo mkdir -p /home/insurance/venv
+
+root@insurance:~# sudo mkdir -p /home/insurance/venv
+root@insurance:~# sudo mkdir -p /home/insurance/logs
+root@insurance:~# sudo chown -R insurance:insurance /home/insurance/
+root@insurance:~# ls -lart /home/insurance/public_html
+total 8
+drwxr-xr-x 2 insurance insurance 4096 Mar 14 08:41 .
+drwxr-x--- 5 insurance insurance 4096 Mar 14 08:41 ..
+root@insurance:~#
+
+-rw-r--r--  1 root root   856013 Mar 14 08:47 Kereta-Insurance-main.zip
+
+root@insurance:~# sudo apt install -y unzip
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+
+root@insurance:~# sudo unzip /root/Kereta-Insurance-main.zip -d /home/insurance/public_html/
+Archive:  /root/Kereta-Insurance-main.zip
+
+root@insurance:~# ls -la /home/insurance/public_html/
+total 12
+drwxr-xr-x 3 insurance insurance 4096 Mar 14 08:50 .
+drwxr-x--- 5 insurance insurance 4096 Mar 14 08:47 ..
+drwxr-xr-x 7 root      root      4096 Mar 12 14:48 Kereta-Insurance-main
+
+
+root@insurance:~# ls -la /home/insurance/public_html/
+total 12
+drwxr-xr-x 3 insurance insurance 4096 Mar 14 08:50 .
+drwxr-x--- 5 insurance insurance 4096 Mar 14 08:47 ..
+drwxr-xr-x 7 root      root      4096 Mar 12 14:48 Kereta-Insurance-main
+root@insurance:~# sudo mv /home/insurance/public_html/Kereta-Insurance-main/* /home/insurance/public_html/
+root@insurance:~# sudo rm -rf /home/insurance/public_html/Kereta-Insurance-main/
+root@insurance:~# ls -la /home/insurance/public_html/
+total 60
+drwxr-xr-x 7 insurance insurance 4096 Mar 14 08:52 .
+drwxr-x--- 5 insurance insurance 4096 Mar 14 08:47 ..
+-rw-r--r-- 1 root      root       871 Mar 12 14:48 0002_vehiclecode.py
+-rw-r--r-- 1 root      root        50 Mar 12 14:48 PONG
+-rw-r--r-- 1 root      root       434 Mar 12 14:48 README.md
+drwxr-xr-x 7 root      root      4096 Mar 12 14:48 core
+drwxr-xr-x 3 root      root      4096 Mar 12 14:48 dashboard
+-rw-r--r-- 1 root      root        16 Mar 12 14:48 export
+-rw-r--r-- 1 root      root      2418 Mar 12 14:48 gothic-sled-462407-j6-ec23605b5f27.json
+drwxr-xr-x 2 root      root      4096 Mar 12 14:48 insurance_whatsapp
+-rw-r--r-- 1 root      root       674 Mar 12 14:48 manage.py
+drwxr-xr-x 3 root      root      4096 Mar 12 14:48 master
+-rw-r--r-- 1 root      root      1627 Mar 12 14:48 requirement_latest.txt
+-rw-r--r-- 1 root      root      1627 Mar 12 14:48 requirements.txt
+drwxr-xr-x 4 root      root      4096 Mar 12 14:48 templates
+
+
+root@insurance:~# sudo chown -R insurance:insurance /home/insurance/public_html/
+root@insurance:~# ls -la /home/insurance/public_html/
+total 60
+drwxr-xr-x 7 insurance insurance 4096 Mar 14 08:52 .
+drwxr-x--- 5 insurance insurance 4096 Mar 14 08:47 ..
+-rw-r--r-- 1 insurance insurance  871 Mar 12 14:48 0002_vehiclecode.py
+-rw-r--r-- 1 insurance insurance   50 Mar 12 14:48 PONG
+-rw-r--r-- 1 insurance insurance  434 Mar 12 14:48 README.md
+drwxr-xr-x 7 insurance insurance 4096 Mar 12 14:48 core
+drwxr-xr-x 3 insurance insurance 4096 Mar 12 14:48 dashboard
+-rw-r--r-- 1 insurance insurance   16 Mar 12 14:48 export
+-rw-r--r-- 1 insurance insurance 2418 Mar 12 14:48 gothic-sled-462407-j6-ec23605b5f27.json
+drwxr-xr-x 2 insurance insurance 4096 Mar 12 14:48 insurance_whatsapp
+-rw-r--r-- 1 insurance insurance  674 Mar 12 14:48 manage.py
+drwxr-xr-x 3 insurance insurance 4096 Mar 12 14:48 master
+-rw-r--r-- 1 insurance insurance 1627 Mar 12 14:48 requirement_latest.txt
+-rw-r--r-- 1 insurance insurance 1627 Mar 12 14:48 requirements.txt
+drwxr-xr-x 4 insurance insurance 4096 Mar 12 14:48 templates
+
+root@insurance:~# python3 --version
+Python 3.12.3
+root@insurance:~# nginx -v
+-bash: nginx: command not found
+root@insurance:~# sudo apt install -y nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+
+root@insurance:~# sudo apt install -y python3.12-venv
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+
+
+root@insurance:~# sudo su - insurance
+insurance@insurance:~$ python3 -m venv /home/insurance/venv
+insurance@insurance:~$ source /home/insurance/venv/bin/activate
+(venv) insurance@insurance:~$ pip install --upgrade pip
+Requirement already satisfied: pip in ./venv/lib/python3.12/site-packages (24.0)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 66.0 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 24.0
+    Uninstalling pip-24.0:
+      Successfully uninstalled pip-24.0
+Successfully installed pip-26.0.1
+
+
+(venv) insurance@insurance:~$ pip install -r /home/insurance/public_html/requirements.txt
+Collecting aiohappyeyeballs==2.6.1 (from -r /home/insurance/public_html/requirements.txt (line 1))
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'mysqlclient' when getting requirements to build wheel
+
+(venv) insurance@insurance:~$ deactivate
+
+root@insurance:~# sudo apt install -y pkg-config python3-dev default-libmysqlclient-dev build-essential
+
+root@insurance:~# sudo su - insurance
+insurance@insurance:~$ source /home/insurance/venv/bin/activate
+(venv) insurance@insurance:~$ pip install -r /home/insurance/public_html/requirements.txt
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'mysqlclient' when getting requirements to build wheel
+(venv) insurance@insurance:~$ deactivate
+insurance@insurance:~$ exit
+logout
+root@insurance:~# sudo apt install -y libmysqlclient-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+libmysqlclient-dev is already the newest version (8.4.8-1ubuntu24.04).
+libmysqlclient-dev set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+root@insurance:~# pkg-config --cflags mysqlclient
+Package openssl was not found in the pkg-config search path.
+Perhaps you should add the directory containing `openssl.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'openssl', required by 'mysqlclient', not found
+
+root@insurance:~# sudo apt install -y libssl-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  libssl-doc
+The following NEW packages will be installed:
+  libssl-dev
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2407 kB of archives.
+After this operation, 13.3 MB of additional disk space will be used.
+Get:1 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble-updates/main amd64 libssl-dev amd64 3.0.13-0ubuntu3.7 [2407 kB]
+Fetched 2407 kB in 0s (22.9 MB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libssl-dev:amd64.
+(Reading database ... 60257 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_3.0.13-0ubuntu3.7_amd64.deb ...
+Unpacking libssl-dev:amd64 (3.0.13-0ubuntu3.7) ...
+Setting up libssl-dev:amd64 (3.0.13-0ubuntu3.7) ...
+root@insurance:~# pkg-config --cflags mysqlclient
+-I/usr/include/mysql
+root@insurance:~#
+
+
+root@insurance:~# sudo su - insurance
+insurance@insurance:~$ source /home/insurance/venv/bin/activate
+(venv) insurance@insurance:~$ pip install -r /home/insurance/public_html/requirements.txt
+
+Successfully
+
+(venv) insurance@insurance:~$ pip install gunicorn
+Collecting gunicorn
+  Downloading gunicorn-25.1.0-py3-none-any.whl.metadata (5.5 kB)
+Requirement already satisfied: packaging in ./venv/lib/python3.12/site-packages (from gunicorn) (25.0)
+Downloading gunicorn-25.1.0-py3-none-any.whl (197 kB)
+Installing collected packages: gunicorn
+Successfully installed gunicorn-25.1.0
+(venv) insurance@insurance:~$
+
+
+(venv) insurance@insurance:~$ cd /home/insurance/public_html
+(venv) insurance@insurance:~/public_html$ ls -lart
+total 60
+drwxr-xr-x 4 insurance insurance 4096 Mar 12 14:48 templates
+-rw-r--r-- 1 insurance insurance 1627 Mar 12 14:48 requirements.txt
+-rw-r--r-- 1 insurance insurance 1627 Mar 12 14:48 requirement_latest.txt
+drwxr-xr-x 3 insurance insurance 4096 Mar 12 14:48 master
+-rw-r--r-- 1 insurance insurance  674 Mar 12 14:48 manage.py
+drwxr-xr-x 2 insurance insurance 4096 Mar 12 14:48 insurance_whatsapp
+-rw-r--r-- 1 insurance insurance 2418 Mar 12 14:48 gothic-sled-462407-j6-ec23605b5f27.json
+-rw-r--r-- 1 insurance insurance   16 Mar 12 14:48 export
+drwxr-xr-x 3 insurance insurance 4096 Mar 12 14:48 dashboard
+drwxr-xr-x 7 insurance insurance 4096 Mar 12 14:48 core
+-rw-r--r-- 1 insurance insurance  434 Mar 12 14:48 README.md
+-rw-r--r-- 1 insurance insurance   50 Mar 12 14:48 PONG
+-rw-r--r-- 1 insurance insurance  871 Mar 12 14:48 0002_vehiclecode.py
+drwxr-xr-x 7 insurance insurance 4096 Mar 14 08:52 .
+drwxr-x--- 6 insurance insurance 4096 Mar 14 09:04 ..
+
+(venv) insurance@insurance:~/public_html$ ls -lart
+total 60
+drwxr-xr-x 4 insurance insurance 4096 Mar 12 14:48 templates
+-rw-r--r-- 1 insurance insurance 1627 Mar 12 14:48 requirements.txt
+-rw-r--r-- 1 insurance insurance 1627 Mar 12 14:48 requirement_latest.txt
+drwxr-xr-x 3 insurance insurance 4096 Mar 12 14:48 master
+-rw-r--r-- 1 insurance insurance  674 Mar 12 14:48 manage.py
+drwxr-xr-x 2 insurance insurance 4096 Mar 12 14:48 insurance_whatsapp
+-rw-r--r-- 1 insurance insurance 2418 Mar 12 14:48 gothic-sled-462407-j6-ec23605b5f27.json
+-rw-r--r-- 1 insurance insurance   16 Mar 12 14:48 export
+drwxr-xr-x 3 insurance insurance 4096 Mar 12 14:48 dashboard
+drwxr-xr-x 7 insurance insurance 4096 Mar 12 14:48 core
+-rw-r--r-- 1 insurance insurance  434 Mar 12 14:48 README.md
+-rw-r--r-- 1 insurance insurance   50 Mar 12 14:48 PONG
+-rw-r--r-- 1 insurance insurance  871 Mar 12 14:48 0002_vehiclecode.py
+drwxr-xr-x 7 insurance insurance 4096 Mar 14 08:52 .
+drwxr-x--- 6 insurance insurance 4096 Mar 14 09:04 ..
+(venv) insurance@insurance:~/public_html$ cd insurance_whatsapp/
+(venv) insurance@insurance:~/public_html/insurance_whatsapp$ ls -lart
+total 40
+-rw-r--r-- 1 insurance insurance   413 Mar 12 14:48 wsgi.py
+-rw-r--r-- 1 insurance insurance  1047 Mar 12 14:48 urls.py
+-rw-r--r-- 1 insurance insurance 10730 Mar 12 14:48 settings.py
+-rw-r--r-- 1 insurance insurance   505 Mar 12 14:48 celery.py
+-rw-r--r-- 1 insurance insurance   413 Mar 12 14:48 asgi.py
+-rw-r--r-- 1 insurance insurance    62 Mar 12 14:48 __init__.py
+drwxr-xr-x 2 insurance insurance  4096 Mar 12 14:48 .
+drwxr-xr-x 7 insurance insurance  4096 Mar 14 08:52 ..
+(venv) insurance@insurance:~/public_html/insurance_whatsapp$
+
+change setting.py as per requirement
+
+$ vi /home/insurance/public_html/core/external_benefits.py
+-bash: vi: command not found
+(venv) insurance@insurance:~/public_html$ nano /home/insurance/public_html/core/external_benefits.py
+(venv) insurance@insurance:~/public_html$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, core, django_celery_results, master, sessions
+Running migrations:
+  No migrations to apply.
+  Your models in app(s): 'core' have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+(venv) insurance@insurance:~/public_html$ python manage.py makemigrations
+Migrations for 'core':
+  core/migrations/0045_usersession_grossdue_and_more.py
+    + Add field grossdue to usersession
+    + Add field last_payment_order_id to usersession
+    + Add field netdue to usersession
+    + Add field payment_prompt_sent to usersession
+(venv) insurance@insurance:~/public_html$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, core, django_celery_results, master, sessions
+Running migrations:
+  No migrations to apply.
+(venv) insurance@insurance:~/public_html$ python manage.py collectstatic --noinput
+
+169 static files copied to '/home/insurance/public_html/staticfiles'.
+(venv) insurance@insurance:~/public_html$
+
+(venv) insurance@insurance:~/public_html$ python manage.py collectstatic --noinput
+
+169 static files copied to '/home/insurance/public_html/staticfiles'.
+(venv) insurance@insurance:~/public_html$ find /home/insurance/public_html -name "wsgi.py"
+/home/insurance/public_html/insurance_whatsapp/wsgi.py
+(venv) insurance@insurance:~/public_html$ gunicorn --bind 0.0.0.0:8000 insurance_whatsapp.wsgi:application
+[2026-03-14 09:45:33 +0000] [116604] [INFO] Starting gunicorn 25.1.0
+[2026-03-14 09:45:33 +0000] [116604] [INFO] Listening at: http://0.0.0.0:8000 (116604)
+[2026-03-14 09:45:33 +0000] [116604] [INFO] Using worker: sync
+[2026-03-14 09:45:33 +0000] [116604] [INFO] Control socket listening at /home/insurance/public_html/gunicorn.ctl
+[2026-03-14 09:45:33 +0000] [116606] [INFO] Booting worker with pid: 116606
+
+
+root@insurance:~# sudo nano /etc/systemd/system/gunicorn.service
+
+[Unit]
+Description=Gunicorn daemon for Insurance Django App
+After=network.target
+
+[Service]
+User=insurance
+Group=insurance
+WorkingDirectory=/home/insurance/public_html
+ExecStart=/home/insurance/venv/bin/gunicorn \
+          --workers 3 \
+          --bind unix:/home/insurance/gunicorn.sock \
+          --access-logfile /home/insurance/logs/gunicorn-access.log \
+          --error-logfile /home/insurance/logs/gunicorn-error.log \
+          insurance_whatsapp.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+
+root@insurance:~# sudo systemctl daemon-reload
+root@insurance:~# sudo systemctl start gunicorn
+root@insurance:~# sudo systemctl enable gunicorn
+Created symlink /etc/systemd/system/multi-user.target.wants/gunicorn.service → /etc/systemd/system/gunicorn.service.
+root@insurance:~# sudo systemctl status gunicorn
+● gunicorn.service - Gunicorn daemon for Insurance Django App
+     Loaded: loaded (/etc/systemd/system/gunicorn.service;
+enabled; preset: enabled)
+     Active: active (running) since Sat 2026-03-14 09:49:12 UTC; 21s ago
+   Main PID: 116798 (gunicorn)
+      Tasks: 8 (limit: 9430)
+     Memory: 160.0M (peak: 160.2M)
+        CPU: 1.767s
+     CGroup: /system.slice/gunicorn.service
+             ├─116798 /home/insurance/venv/bin/python3 /home/insurance/venv/bin/gunicorn --workers 3 --bind unix:/
+home/insurance/gunicorn.sock --access-logfile /home/insurance/logs/gunicorn-access.log --error-logfile /home/insurance/logs/gu
+nicorn-error.log insurance_whatsapp.wsgi:application
+             ├─116800 /home/insurance/venv/bin/python3 /home/insurance/venv/bin/gunicorn --workers 3 --bind unix:/
+home/insurance/gunicorn.sock --access-logfile /home/insurance/logs/gunicorn-access.log --error-logfile /home/insurance/logs/gu
+nicorn-error.log insurance_whatsapp.wsgi:application
+             ├─116801 /home/insurance/venv/bin/python3 /home/insurance/venv/bin/gunicorn --workers 3 --bind unix:/
+home/insurance/gunicorn.sock --access-logfile /home/insurance/logs/gunicorn-access.log --error-logfile /home/insurance/logs/gu
+nicorn-error.log insurance_whatsapp.wsgi:application
+             └─116802 /home/insurance/venv/bin/python3 /home/insurance/venv/bin/gunicorn --workers 3 --bind unix:/
+home/insurance/gunicorn.sock --access-logfile /home/insurance/logs/gunicorn-access.log --error-logfile /home/insurance/logs/gu
+nicorn-error.log insurance_whatsapp.wsgi:application
+
+Mar 14 09:49:12 insurance systemd[1]: Started gunicorn.service - Gunicorn daemon for Insurance Django App.
+root@insurance:~# ls -la /home/insurance/gunicorn.sock
+srwxrwxrwx 1 insurance insurance 0 Mar 14 09:49 /home/insurance/gunicorn.sock
+root@insurance:~#
+
+
+#task 2
+
+assigning domain
+
+https://wmsuat.pacificinsurance.com.my
+
+
+root@insurance:~# curl -s ifconfig.me
+35.247.162.140root@insurance:~#
+root@insurance:~#
+root@insurance:~# dig +short wmsuat.pacificinsurance.com.my
+-bash: dig: command not found
+root@insurance:~# ping -c 1 wmsuat.pacificinsurance.com.my
+-bash: ping: command not found
+root@insurance:~# sudo apt update
+Hit:1 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble InRelease
+
+
+root@insurance:~# sudo apt install -y iputils-ping dnsutils curl net-tools
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (8.5.0-2ubuntu10.8).
+
+
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+root@insurance:~# dig +short wmsuat.pacificinsurance.com.my
+35.247.162.140
+root@insurance:~# ping -c 1 wmsuat.pacificinsurance.com.my
+PING wmsuat.pacificinsurance.com.my (35.247.162.140) 56(84) bytes of data.
+64 bytes from 140.162.247.35.bc.googleusercontent.com (35.247.162.140): icmp_seq=1 ttl=61 time=0.370 ms
+
+--- wmsuat.pacificinsurance.com.my ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.370/0.370/0.370/0.000 ms
+root@insurance:~#
+
+root@insurance:~# sudo nano /etc/nginx/sites-available/insurance
+
+move server_name  from ip to domain name
+
+root@insurance:~# sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@insurance:~# sudo systemctl reload nginx
+Warning: The unit file, source configuration file or drop-ins of nginx.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+
+root@insurance:~# curl -I http://wmsuat.pacificinsurance.com.my
+HTTP/1.1 404 Not Found
+Server: nginx/1.24.0 (Ubuntu)
+Date: Mon, 16 Mar 2026 10:16:17 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 179
+Connection: keep-alive
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+root@insurance:~# curl -I http://wmsuat.pacificinsurance.com.my/admin/
+HTTP/1.1 302 Found
+Server: nginx/1.24.0 (Ubuntu)
+Date: Mon, 16 Mar 2026 10:18:22 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+Location: /admin/login/?next=/admin/
+Expires: Mon, 16 Mar 2026 10:18:22 GMT
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate, private
+X-Frame-Options: DENY
+Vary: Cookie
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+root@insurance:~# sudo apt update
+Hit:1 http://asia-southeast1.gce.archive.ubuntu.com/ubuntu noble InRelease
+
+root@insurance:~# sudo certbot --nginx -d wmsuat.pacificinsurance.com.my
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): tech2chrome@gmail.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.6-August-18-2025.pdf. You must agree
+in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+Account registered.
+Requesting a certificate for wmsuat.pacificinsurance.com.my
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/wmsuat.pacificinsurance.com.my/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/wmsuat.pacificinsurance.com.my/privkey.pem
+This certificate expires on 2026-06-14.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+Deploying certificate
+Successfully deployed certificate for wmsuat.pacificinsurance.com.my to /etc/nginx/sites-enabled/insurance
+Congratulations! You have successfully enabled HTTPS on https://wmsuat.pacificinsurance.com.my
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
